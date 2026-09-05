@@ -1,7 +1,3 @@
-Aqui está o **README.md** completo em Markdown, formatado de forma profissional e com o passo a passo detalhado para você e sua equipe executarem o setup, deploy e limpeza (cleanup) do projeto.
-
----
-
 # 🚀 AWS Credits Collector - CDK Python
 
 Este projeto em AWS CDK (Python) automatiza a criação dos 5 recursos necessários para cumprir os requisitos do painel **Explore AWS / Earn AWS Credits** e liberar até **$100 USD em créditos na sua conta AWS**.
