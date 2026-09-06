@@ -27,6 +27,8 @@ cdk destroy
 
 > Information: Could take between 12 and 24 hours to get update the status of milestones.
 
+> Note: AWS is not recognizing Bedrock API call to check the milestone related to it, I keep the code for learning purpose only.
+
 ## 📋 Milestones coverage
 
 | Task | Provisoned Resource | Award |

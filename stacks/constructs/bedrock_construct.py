@@ -8,7 +8,7 @@ class BedrockConstruct(Construct):
     def __init__(self, scope: Construct, id: str, **kwargs) -> None:
         super().__init__(scope, id, **kwargs)
 
-        # Chamada direta da API Converse do Bedrock no evento de 'onCreate'
+        # Direct call to the Bedrock Converse API within the 'onCreate' event
         self.bedrock_trigger = cr.AwsCustomResource(
             self, "BedrockOnCreateTrigger",
             on_create=cr.AwsSdkCall(

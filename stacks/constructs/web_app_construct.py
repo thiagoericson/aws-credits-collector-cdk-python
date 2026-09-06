@@ -6,7 +6,7 @@ from aws_cdk import (
 )
 from constructs import Construct
 
-# Mapeia o caminho absoluto para a pasta 'src'
+# Maps the absolute path to the 'src' folder
 SRC_DIR = str(Path(__file__).parent.parent / "src")
 
 class WebAppConstruct(Construct):

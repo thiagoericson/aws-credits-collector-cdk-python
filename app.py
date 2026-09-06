@@ -1,14 +1,13 @@
 #!/usr/bin/env python3
 import os
 import aws_cdk as cdk
-from stacks.credits_stack import AWS100CreditsStack
+from stacks.aws100usd_stack import AWS100USDStack
 
 app = cdk.App()
 
-# Instancia a Stack passando a conta e região do ambiente
-AWS100CreditsStack(
+AWS100USDStack(
     app, 
-    "AWS100CreditsStack",
+    "AWS100USDStack",
     env=cdk.Environment(
         account=os.getenv("CDK_DEFAULT_ACCOUNT"),
         region=os.getenv("CDK_DEFAULT_REGION")

@@ -2,8 +2,8 @@ import json
 
 def handler(event, context):
     """
-    Handler para a função Lambda do Web App.
-    Responde às requisições HTTP enviadas pelo API Gateway.
+    Handler for the Web App Lambda function.
+    Responds to HTTP requests sent by API Gateway.    
     """
     return {
         "statusCode": 200,
