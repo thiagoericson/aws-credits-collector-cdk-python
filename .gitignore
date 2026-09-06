@@ -1,0 +1,48 @@
+# ==========================================
+# Credentials & Sensitive Files (CRITICAL)
+# ==========================================
+rootkey.csv
+*.pem
+*.csv
+.env
+.env.*
+
+# ==========================================
+# AWS CDK & CloudFormation Synthesized Output
+# ==========================================
+cdk.out/
+cdk.context.json
+
+# ==========================================
+# Python Virtual Environments
+# ==========================================
+.venv/
+venv/
+ENV/
+env/
+
+# ==========================================
+# Python Bytecode & Cache Directories
+# ==========================================
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.coverage
+
+# ==========================================
+# Local Scratch & Temporary Media Files
+# ==========================================
+steps.txt
+*.png
+*.jpg
+*.jpeg
+
+# ==========================================
+# IDEs & System Metadata
+# ==========================================
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
