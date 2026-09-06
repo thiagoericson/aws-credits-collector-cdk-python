@@ -13,8 +13,7 @@ Este projeto provisiona via AWS CDK (Python) a infraestrutura necessária para c
 
 ```bash
 # 1. Bootstrap do CDK (Apenas na primeira execução por conta/região)
-cdk bootstrap aws://041459489721/us-east-1
-// cdk bootstrap aws://<your-account-id>/<region>
+cdk bootstrap aws://<your-account-id>/<region>
 
 # 2. Sintetizar e validar a infraestrutura
 cdk synth
