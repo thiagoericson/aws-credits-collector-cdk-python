@@ -1,7 +1,6 @@
 from aws_cdk import Stack, aws_ec2 as ec2
 from constructs import Construct
 
-# Importações relativas corrigidas
 from .constructs.compute_construct import ComputeConstruct
 from .constructs.database_construct import DatabaseConstruct
 from .constructs.budget_construct import BudgetConstruct
