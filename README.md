@@ -46,3 +46,70 @@ For that: Console > Amazon Bedrock -> Test -> Playground -> Select model -> Writ
 ## Disclaimer
 
 ⚠️ Be aware that AWS usage could be charge.
+
+
+
+----
+
+## Quick Start
+```bash
+# 0. After clone:
+cd aws-cdk-bedrock-guardrail-enabler
+```
+
+### Virtual Env (.venv)
+
+**- in macOS / Linux terminal:**
+```bash
+# 1. Create the virtual environment in the project directory, and activate the virtual environment
+python3 -m venv .venv
+source .venv/bin/activate
+```
+
+**- in Windows PowerShell:**
+```powershell
+# 1. Create the virtual environment in the project directory, and activate the virtual environment
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+```
+
+**Validation:** Upon successfully activating the environment, you will see the `(.venv)` prefix before the prompt in your terminal.
+
+**- Then, in (.venv) in any terminal:**
+```bash
+# 2. Install project dependencies (AWS CDK, constructs, etc.)
+python -m pip install --upgrade pip
+pip install -r requirements.txt
+```
+
+**Deactivate the virtual environment:** When you finish development, simply type and run `deactivate` in any terminal.
+
+
+### AWS CDK
+
+```bash
+# 3. Prepare the Account/Region (required only the first time)
+cdk bootstrap aws://YOUR_AWS_ACCOUNT/YOUR_REGION
+
+# 4. Synthesizes the infrastructure (checking the conversion from Python to CloudFormation)
+cdk synth
+
+# 5. Deploys the infrastructure
+cdk deploy
+
+# 6. Destroy resources (when necessary)
+cdk destroy
+```
+
+**Prerequisites:** Needs `aws configure` already set up. If not, please, check the official AWS Docs: [Configuration and credential file settings in the AWS CLI](https://docs.aws.amazon.com/cli/v1/userguide/cli-configure-files.html)
+
+## Author
+
+**Thiago Ericson Cabral**
+- [LinkedIn](https://www.linkedin.com/in/thiagoericson/)
+- [Medium](https://medium.com/@thiagoericson)
+- [AWS Builder Center](https://builder.aws.com/community/@thiagocabral)
+- [Github](https://github.com/thiagoericson/)
+- [DEV Community](https://dev.to/thiagocabral)
+
+Let's connect!
