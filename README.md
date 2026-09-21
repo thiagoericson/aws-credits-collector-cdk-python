@@ -43,8 +43,8 @@ aws-credits-collector-cdk-python/
 Before deploying the stack, ensure you have the following installed and configured on your environment:
 
 * **Python 3.9+**
-* **Node.js** & **AWS CDK CLI**: Installed globally (npm install -g aws-cdk)
-* **AWS CLI v2**: Installed and authenticated (aws configure)
+* **Node.js** & **AWS CDK CLI**: Installed globally (`npm install -g aws-cdk`)
+* **AWS CLI v2**: Installed and authenticated (`aws configure`)
 
 ## 🚀 Quickstart & Deployment
 
