@@ -51,7 +51,7 @@ Before deploying the stack, ensure you have the following installed and configur
 Run these steps in your terminal to deploy the stack to your AWS account:
 ```bash
 # 1. Clone & enter project
-git clone https://github.com/SEU_USUARIO/aws-credits-collector-cdk-python.git
+git clone https://github.com/YOUR_USER/aws-credits-collector-cdk-python.git
 cd aws-credits-collector-cdk-python
 
 # 2. Setup virtual environment & dependencies
