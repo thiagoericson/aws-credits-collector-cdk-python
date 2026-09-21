@@ -1,115 +1,86 @@
-# The 100 USD AWS CDK Stack - Python
+# AWS Credits Collector - CDK Python 🚀
 
-This project provisions, using AWS CDK (Python), the infrastructure required to meet the 5 requirements of the **Explore AWS / Earn AWS Credits** dashboard and unlock up to **$100 USD in AWS credits**.
+[![Python](https://img.shields.io/badge/Python-3.9%2B-blue)](https://www.python.org/)
+[![AWS CDK](https://img.shields.io/badge/AWS%20CDK-v2-orange)](https://aws.amazon.com/cdk/)
+[![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 
-Of course, you can do it using console. But, don't be boring, enjoy the learning.
+Automates the creation of all 5 AWS infrastructure components required to complete the "Earn AWS Credits" dashboard milestones and claim up to $100 USD in AWS promotional credits using AWS CDK in Python.
 
-## Prerequisites
-
-- Python 3.9+ with an active virtual environment (`.venv`) and installed dependencies (`pip install -r requirements.txt`)
-- AWS CLI installed and authenticated (`aws configure`)
-- AWS CDK CLI installed (`npm install -g aws-cdk`)
-
-## Quick Start (Deploy)
-
-```bash
-# 1. CDK bootstrapping (Only on the first run per account/region)
-cdk bootstrap aws://<your-account-id>/<region>
-
-# 2. Synthesize and validate the infrastructure
-cdk synth
-
-# 3. Deploy all resources
-cdk deploy
-
-# 4. Cleaning the environment
-cdk destroy
+## 📐 Architecture Diagram
+```mermaid
+graph LR
+    subgraph Stack ["AWS100CreditsStack"]
+        EC2["EC2 (t2.micro)"]
+        RDS[("RDS PostgreSQL")]
+        APIGW["API Gateway"] --> Lambda["Lambda"]
+        Budget["AWS Budgets ($10)"]
+        CR["Custom Resource"] -->|Converse API| Bedrock["Amazon Bedrock"]
+    end
 ```
 
-## Milestones coverage
-
-| Task | Provisoned Resource | Award |
-| --- | --- | --- |
-| **Launch an instance using EC2** | EC2 instance (`t2.micro`) in the default VPC | $20 USD |
-| **Set up a cost budget using AWS Budgets** | Monthly cost budget in AWS Budgets | $20 USD |
-| **Create an Aurora or RDS database** | RDS PostgreSQL instance (`t3.micro`) | $20 USD |
-| **Create a web app using AWS Lambda** | AWS Lambda + HTTP API Gateway | $20 USD |
-| **Use a foundation model in Amazon Bedrock** | Custom Resource (Lambda + `boto3`) invoking a Bedrock model | $20 USD |
-
-> Note: Could take up to 24 hours to get update the status of milestones.
-
-### Amazon Bedrock's milestone
-AWS is not recognizing Bedrock API call to check the milestone related to it yet, I keep the code for learning purpose only. 
-
-For that: Console > Amazon Bedrock -> Test -> Playground -> Select model -> Write any prompt -> Run -> Done (got yours 20USD)
-
-## Disclaimer
-
-⚠️ Be aware that AWS usage could be charge.
-
-
-
-----
-
-## Quick Start
+## 📁 Project Structure
 ```bash
-# 0. After clone:
-cd aws-cdk-bedrock-guardrail-enabler
+aws-credits-collector-cdk-python/
+├── app.py                     # CDK Application entry point
+├── cdk.json                   # CDK configuration file
+├── requirements.txt           # Python dependencies (aws-cdk-lib, etc.)
+└── stacks/
+    ├── __init__.py
+    ├── credits_stack.py       # Main stack orchestrator
+    ├── constructs/            # Modular CDK constructs (IaC)
+    │   ├── __init__.py
+    │   ├── bedrock_construct.py  # Amazon Bedrock Custom Resource
+    │   ├── budget_construct.py   # AWS Budgets setup
+    │   ├── compute_construct.py  # EC2 instance definition
+    │   ├── database_construct.py # RDS PostgreSQL instance
+    │   └── web_app_construct.py  # Lambda + API Gateway setup
+    └── src/                   # Lambda function source code
+        └── web_app.py         # HTTP API Handler (Hello World)
 ```
 
-### Virtual Env (.venv)
+## 📋 Prerequisites
 
-**- in macOS / Linux terminal:**
+Before deploying the stack, ensure you have the following installed and configured on your environment:
+
+* **Python 3.9+**
+* **Node.js** & **AWS CDK CLI**: Installed globally (npm install -g aws-cdk)
+* **AWS CLI v2**: Installed and authenticated (aws configure)
+
+## 🚀 Quickstart & Deployment
+
+Run these steps in your terminal to deploy the stack to your AWS account:
 ```bash
-# 1. Create the virtual environment in the project directory, and activate the virtual environment
+# 1. Clone & enter project
+git clone https://github.com/SEU_USUARIO/aws-credits-collector-cdk-python.git
+cd aws-credits-collector-cdk-python
+
+# 2. Setup virtual environment & dependencies
 python3 -m venv .venv
-source .venv/bin/activate
-```
-
-**- in Windows PowerShell:**
-```powershell
-# 1. Create the virtual environment in the project directory, and activate the virtual environment
-python -m venv .venv
-.\.venv\Scripts\Activate.ps1
-```
-
-**Validation:** Upon successfully activating the environment, you will see the `(.venv)` prefix before the prompt in your terminal.
-
-**- Then, in (.venv) in any terminal:**
-```bash
-# 2. Install project dependencies (AWS CDK, constructs, etc.)
-python -m pip install --upgrade pip
+source .venv/bin/activate  # Windows: .venv\Scripts\Activate.ps1
 pip install -r requirements.txt
+
+# 3. Validate & Deploy to AWS
+cdk bootstrap  # Required once per account/region
+cdk synth      # Synthesize CloudFormation template
+cdk deploy
 ```
 
-**Deactivate the virtual environment:** When you finish development, simply type and run `deactivate` in any terminal.
+## 🧹 Cleanup
 
-
-### AWS CDK
-
+To avoid incurring any unwanted charges, you can destroy all deployed resources with a single command:
 ```bash
-# 3. Prepare the Account/Region (required only the first time)
-cdk bootstrap aws://YOUR_AWS_ACCOUNT/YOUR_REGION
-
-# 4. Synthesizes the infrastructure (checking the conversion from Python to CloudFormation)
-cdk synth
-
-# 5. Deploys the infrastructure
-cdk deploy
-
-# 6. Destroy resources (when necessary)
 cdk destroy
 ```
 
-**Prerequisites:** Needs `aws configure` already set up. If not, please, check the official AWS Docs: [Configuration and credential file settings in the AWS CLI](https://docs.aws.amazon.com/cli/v1/userguide/cli-configure-files.html)
+## ⚠️ Important Notes
 
-## Author
+**_Bedrock Milestone Notice_**: The AWS Console currently does not automatically recognize programmatically triggered Bedrock API calls via Custom Resources for the milestone credit. The CDK code is retained for architectural and learning purposes.
 
-**Thiago Ericson Cabral**
-- [LinkedIn](https://www.linkedin.com/in/thiagoericson/)
-- [Medium](https://medium.com/@thiagoericson)
-- [AWS Builder Center](https://builder.aws.com/community/@thiagocabral)
-- [Github](https://github.com/thiagoericson/)
-- [DEV Community](https://dev.to/thiagocabral)
+To claim the $20 Bedrock credit manually:
+AWS Console ➔ Amazon Bedrock ➔ Playgrounds ➔ Select any model ➔ Run a prompt ➔ Done!
 
-Let's connect!
+## 👤 Author
+Created by **Thiago Ericson Cabral**
+* 💼 LinkedIn: [in/thiagoericson](https://www.linkedin.com/in/thiagoericson/)
+* ✍️ Medium (pt-BR): [@thiagoericson](https://medium.com/@thiagoericson)
+* ☁️ AWS Builder Center (en-US): [@thiagocabral](https://builder.aws.com/community/@thiagocabral)
