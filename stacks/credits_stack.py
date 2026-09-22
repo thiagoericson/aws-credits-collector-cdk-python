@@ -7,7 +7,7 @@ from .constructs.budget_construct import BudgetConstruct
 from .constructs.web_app_construct import WebAppConstruct
 from .constructs.bedrock_construct import BedrockConstruct
 
-class AWS100USDStack(Stack):
+class CreditsStack(Stack):
 
     def __init__(self, scope: Construct, construct_id: str, **kwargs) -> None:
         super().__init__(scope, construct_id, **kwargs)
