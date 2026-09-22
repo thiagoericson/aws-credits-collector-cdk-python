@@ -11,6 +11,6 @@ class BudgetConstruct(Construct):
                 "budgetType": "COST",
                 "timeUnit": "MONTHLY",
                 "budgetLimit": {"amount": 10, "unit": "USD"},
-                "budgetName": "CreditTrackerBudget"
+                "budgetName": "Credits-Monthly-Budget"
             }
         )
