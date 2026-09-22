@@ -9,7 +9,7 @@ Automates the creation of all 5 AWS infrastructure components required to comple
 ## 📐 Architecture Diagram
 ```mermaid
 graph LR
-    subgraph Stack ["AWS100CreditsStack"]
+    subgraph Stack ["CreditsStack"]
         EC2["EC2 (t2.micro)"]
         RDS[("RDS PostgreSQL")]
         APIGW["API Gateway"] --> Lambda["Lambda"]
